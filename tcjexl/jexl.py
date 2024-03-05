@@ -23,7 +23,7 @@ import math
 import functools
 
 from datetime import timezone
-from .functions import linearInterpolator, linearSelector, randomLinearInterpolator, zipStrList, valueResolver
+from .expression_functions import linearInterpolator, linearSelector, randomLinearInterpolator, zipStrList, valueResolver
 
 class JEXL(pyjexl.JEXL):
     def __init__(self, context=None, now=datetime.datetime.now(timezone.utc)):
