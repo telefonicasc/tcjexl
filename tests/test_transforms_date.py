@@ -24,7 +24,6 @@
 # - timeFormat
 # - currentHour24
 # - currentDay
-# - schedulerValue
 
 import unittest
 import datetime
@@ -67,16 +66,4 @@ class TestTransformsDate(unittest.TestCase):
         result = self.jexl.evaluate('0|currentDay', {})
         self.assertEqual(result, 1)
 
-    def test_schedulerValue(self):
-        # Current time is 2024-02-01T12:43:55.123Z, so
-        # next tick for "* * 2 2 *" is 2024-02-02
-        context = {'a': 'no match'}
-        schedule = '[ ["* * 2 2 *", "match"] ]'
 
-        # ref date before tick (<2024-02-02)
-        result = self.jexl.evaluate('a|schedulerValue("2024-02-01T01:00:00.00Z", ' + schedule + ')', context)
-        self.assertEqual(result, "match")
-
-        # ref date after tick (>2024-02-02)
-        result = self.jexl.evaluate('a|schedulerValue("2024-02-05T01:00:00.00Z", ' + schedule + ')', context)
-        self.assertEqual(result, "no match")

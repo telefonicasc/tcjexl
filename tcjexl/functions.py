@@ -15,10 +15,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with IoT orchestrator. If not, see http://www.gnu.org/licenses/.
 
-import datetime
 import random
-from datetime import timezone
-from croniter import croniter
 
 def zipStrList(left: list, right: list, sep: str = ""):
     l_length = len(left)
@@ -27,36 +24,6 @@ def zipStrList(left: list, right: list, sep: str = ""):
         return [str(left[i]) + sep + str(right[i]) for i in range(l_length)]
     else:
         raise ValueError(f"zipStrList input error, left length: {l_length}, right len length: {r_length}")
-
-
-def schedulerValue(lastValue, lastRun, array):
-    for item in array:
-        cron_expression = str(item[0])
-        newValue = item[1]
-
-        if (lastRun == None):
-            return lastValue
-
-        value = None
-        if "value" in lastRun:
-            value = lastRun["value"]
-        else:
-            value = lastRun
-
-        try:
-            lastrun_date = datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-        except:
-            lastrun_date = datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%fZ")
-        current_date = datetime.datetime.now(timezone.utc)
-
-        cron = croniter(cron_expression, lastrun_date)
-        next_date = cron.get_next(datetime.datetime)
-        next_date = next_date.astimezone(current_date.tzinfo)
-
-        if (current_date > next_date):
-            return newValue
-
-    return lastValue
 
 
 def linearInterpolator(t, interpolations):

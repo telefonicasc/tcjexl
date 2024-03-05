@@ -33,8 +33,7 @@ LONG_DESC_TYPE = "text/markdown"
 
 # Required packages. They will be installed if not already installed
 INSTALL_REQUIRES = [
-    'pyjexl==0.3.0',
-    'croniter==1.3.15'
+    'pyjexl==0.3.0'
 ]
 
 setup(

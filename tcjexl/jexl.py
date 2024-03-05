@@ -23,7 +23,7 @@ import math
 import functools
 
 from datetime import timezone
-from .functions import linearInterpolator, linearSelector, randomLinearInterpolator, schedulerValue, zipStrList, valueResolver
+from .functions import linearInterpolator, linearSelector, randomLinearInterpolator, zipStrList, valueResolver
 
 class JEXL(pyjexl.JEXL):
     def __init__(self, context=None, now=datetime.datetime.now(timezone.utc)):
@@ -63,7 +63,6 @@ class JEXL(pyjexl.JEXL):
         super().add_transform("timeFormat", lambda date, string: date.strftime(string))
         super().add_transform("currentHour24", lambda x: int(self.now().hour))
         super().add_transform("currentDay", lambda x: int(self.now().day))
-        super().add_transform("schedulerValue", lambda lastValue, lastRun, array: schedulerValue(lastValue, lastRun, array))
 
         # Tested by test_transforms_interpolation.py
         super().add_transform("interpolate", lambda step, ini, end, nSteps: ((end - ini) * (step % nSteps)) / nSteps)

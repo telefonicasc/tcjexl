@@ -62,23 +62,6 @@ a text string
 - `timeFormat`: allows to format a given date with a given format. For instance, if current date is 07/07/2023 and we use `0|currentTime|timeFormat("%Y")` then `2023` will be returned.
 - `currentHour24`: returns current time in 24 hours format. Example: `0|currentHour24`.
 - `currentDay`: returns the current day of the month. Example: `0|currentDay`.
-- `schedulerValue`: it allows to set values based on a schedule and the current time. Check [specific section](#schedulervalue-details) for more details.
-
-### `schedulerValue` details
-
-Taking into account an expression like this one:
-
-```
-field|schedulerValue(<a given date>, [ [<cron string 1>, <value1>], ..., [<cron string N>, <value N>] ])
-```
-
-where the `<cront string i>` are cron schedules (e.g. `* * * * SUN`) and being current date `<current date>`, the behaviour is as follows:
-
-* The `[<cron string i>, <valuei>]` pairs are evaluated from left to right
-* The next "tick" is calculated based on `<cron string i>` and `<current date>`. For instance, if schedule is `* * * * SUN` and current time is Tuesday March 5th 2024, next tick for is Sunday March 10th 2024. If current time is Wednesday March 13th for the same schedule, next tick is Sunday March 17th.
-* If `<a given date>` is *before* next tick date, then we have a match and `<value i>` is returned. The i+1 to N elements in the schedulers list are not evaluated.
-* `<value i>` can be a literal value (e.g. `"ok"`) or an expression (e.g. `0|currentTimeIso`)
-* If none of the `[<cron string i>, <valuei>]` matches, then `field` is returned.
 
 ### Interpolation transformations
 
