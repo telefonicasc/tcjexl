@@ -99,4 +99,3 @@ class TestTransformsInterpolation(unittest.TestCase):
 
         # Invalid usage (unknown value)
         self.assertRaises(ValueError, self.jexl.evaluate, '"UNKNOWN"|' + expr, {})
-

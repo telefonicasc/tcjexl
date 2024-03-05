@@ -28,7 +28,6 @@ class TestTransformsMisc(unittest.TestCase):
     def setUp(self) -> None:
         self.jexl = JEXL()
 
-
     def test_typeOf(self):
         context = {"a": "text", "b": 7, "c": 7.4, "d": True, "e": None, "f": {}, "g": []}
         result = self.jexl.evaluate('a|typeOf', context)

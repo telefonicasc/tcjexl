@@ -65,5 +65,3 @@ class TestTransformsDate(unittest.TestCase):
     def test_currentDay(self):
         result = self.jexl.evaluate('0|currentDay', {})
         self.assertEqual(result, 1)
-
-

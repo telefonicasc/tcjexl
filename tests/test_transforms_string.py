@@ -53,7 +53,6 @@ class TestTransformsString(unittest.TestCase):
         result = self.jexl.evaluate('c|substring(3,6)', context)
         self.assertEqual(result, 'ven')
 
-
     def test_includes(self):
         context = {'c': 'aGivenString'}
         result = self.jexl.evaluate('c|includes("Given")', context)
