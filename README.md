@@ -30,24 +30,24 @@ a text string
 
 - `rnd`: returns a random number between two integers. Examples: `0|rnd(10)` returns a random number between 0 (included) and 10 (not included). `12|rnd(99)` returns a random number between 12 (included) and 99 (not included).
 - `rndFloat`: returns a random number between two decimal numbers. Examples: `0.2|rndFloat(12.7)` returns a random number between 0.2 and 12.7.
-- `round`: rounds a number with a given number of precision digits. Example: `0.12312|round(2)` return 0.12, rounding 0.12312 to two decimals.
-- `floor`: rounds a number to the lesser integer. Example: `4.9|floor` returns 4.
-- `parseInt`: TBD
-- `parseFloat`: TBD
+- `round`: rounds a number with a given number of precision digits. Example: `0.12312|round(2)` returns `0.12`, rounding 0.12312 to two decimals.
+- `floor`: rounds a number to the lesser integer. Example: `4.9|floor` returns `4`.
+- `parseInt`: converts a string to integer
+- `parseFloat`: coverts a string to float
 
 ### String related transformations
 
 - `uppercase`: converts a given string to uppercase.
 - `lowercase`: converts a given string to lowercase.
-- `toString`: TBD
-- `substring`: TBD
-- `includes`: TBD
+- `toString`: returns string representation
+- `substring`: returns a substring. Examaple: `aGivenString|substring(3,6)` returns `ven`.
+- `includes`: returns `True` is string passed as argument is included in the one that comes in the pipe. Example: `"aGivenString"|includes("Given")` return `True` while `"aGivenString"|includes("Text")` returns `False`. 
 - `len`: returns the number of items in an array or the length of a string.
 
 ### List related transformations
 
 - `next`: returns the next item in an array. Example: `12|next([1,2,3,12,15,18])` returns 15.
-- `indexOf`: TBD
+- `indexOf`: returns the index corresponding to an item in an array. Example: `[1, 2, 3, 12, 15, 18]|indexOf(15)` returns `4`.
 - `rndList`: returns an array of random elements within two limits. Example: `0|rndList(6,8)` is an array with 8 items and each item is a random number between 0 and 6.
 - `rndFloatList`: similar to `rndList`, but with decimal numbers.
 - `zipStringList`: concat two arrays of the same length with a given separator.
@@ -66,7 +66,7 @@ a text string
 ### Interpolation transformations
 
 - `interpolate`: returns number interpolation, given an initial value, a final value and a number of steps. Example: `3|interpolate(0,10,9)`
-- `linearInterpolator`: returns linear value interpolation, taking into account an array of values in `[number, value]` format. Example: `number|linearInterpolator([ [0,0], [1,1], [2,1.5], [8,1.8], [10,2.0]])` for number 2 returns 1.5, for number 5 returns the linear interpolation between 2 and 8, taking into account the associated values 1.5 and 1.8 respectively.
+- `linearInterpolator`: returns linear value interpolation, taking into account an array of values in `[number, value]` format. Example: `number|linearInterpolator([ [0,0], [1,1], [2,1.5], [8,1.8], [10,2.0]])` for number 2 returns `1.5`, for number 5 returns the linear interpolation between 2 and 8, taking into account the associated values 1.5 and 1.8 respectively.
 - `linearSelector`: allows to select a given value taking into account ranges defined between two elements in an array. Example: `0|rndFloat(1)|linearSelector([[0.02,'BLACK'], [0.04,'NO FLAG'], [0.06,'RED'], [0.21,'YELLOW'], [1,'GREEN']])`, if input is `0.02 < (0|rndFloat(1)) ≤ 0,04` returns `NO FLAG`.
 - `randomLinearInterpolator`: returns linear value interpolation with a random factor, taking into account an array of values in `[number, value]` format. Example: `number|randomLinearInterpolator([0,1],[ [0,0], [1,1], [2,1.5], [8,1.8], [10,2.0]])` for number 2 returns a value close to 1.5 (close due to a random factor is applied), for number 5 returns the lineal interpolation between 2 and 8, taking into account the associated values 1.5 and 1.8 respectively and the random factor. The random factor is specified as a `[min, max]` array and the calculated interpolated value is multiplied by a random number between `min` and `max`. For instance, with `[0.85, 0.99]` the result will be closer to the interpolation but with `[0, 1]` the spread will be wider.
 - `alertMaxValue`: returns `True` when input value is greater on equal to a given condition. Example: `0|rnd(5)|alertMaxValue(2)` returns `True` when `0|rnd(5)` is 3, 4 or 5 (for other input values result will be `False`).
@@ -74,7 +74,7 @@ a text string
 
 # Miscelaneous transformations
 
-- `typeOf`: TBD
+- `typeOf`: returns type representation of the data (e.g. `str`, `int`, `float`, etc.)
 - `strToLocation`: given a latitude and a longitude, it returns an array to build a location. Example: `"value1, value2"|strToLocation`. Example: `"value1, value2"|strToLocation` returns `[value1, value2]`, so we can use this:
 
 ```json
