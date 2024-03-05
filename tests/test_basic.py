@@ -15,4 +15,16 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with IoT orchestrator. If not, see http://www.gnu.org/licenses/.
 
-from tcjexl.jexl import JEXL
+
+import unittest
+from tcjexl import JEXL
+
+
+class TestBasic(unittest.TestCase):
+    def test_basic(self):
+        jexl = JEXL()
+
+        context = {"a": 5, "b": 7}
+
+        result = jexl.evaluate('a+b', context)
+        self.assertEqual(result, 12)
