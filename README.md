@@ -22,6 +22,30 @@ Result:
 a text string
 ```
 
+## Using simulated time
+
+By default, the current time reference used by [date related transformations](#date related transformations) is system current time. However, this can be changed using the positional argument `now` in the `JEXL` constructor to specify a function that returns a `datetime` object to be used as current time.
+
+For instance, if we want to set current time to November 13th, 2020 at 6:24:58am we can use:
+
+```python
+from tcjexl import JEXL
+import datetime
+
+def simulated_time():
+    return datetime.datetime(2020, 11, 13, 6, 24, 58, 000, tzinfo=datetime.timezone.utc)
+
+jexl = JEXL(now=simulated_time)
+
+print(jexl.evaluate('0|currentTimeIso', {}))
+```
+
+Result:
+
+```
+2020-11-13T06:24:58.000Z
+```
+
 ## Included transformations
 
 **NOTE:** JEXL pipeline is needed even if the transformation doesn't need an parameter to work (e.g. `currentTime` that provides the current system time and doesn't need and argument). In this case, we use `0|` for these cases (e.g. `0|currentTime`).
