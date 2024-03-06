@@ -140,3 +140,7 @@ You need to be registered at https://pypi.org with permissions at https://pypi.o
 upload process you will be prompted to provide your user and password.
 
 ## Changelog
+
+0.1.0 (March 6th, 2024)
+
+- Initial release
