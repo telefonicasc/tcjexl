@@ -25,7 +25,6 @@ jobs:
     - name: Install dependencies
       run: |
         pip install .
-        pip install -r requirements.txt
         pip install pytest-cov codecov
 
     - name: Run tests with coverage
