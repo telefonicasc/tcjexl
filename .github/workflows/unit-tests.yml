@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: Run Python Tests
+    name: Run Python Tests and Generate Coverage
     runs-on: ubuntu-latest
 
     steps:
@@ -23,10 +23,18 @@ jobs:
         python-version: 3.11
 
     - name: Install dependencies
-      run: pip install .
+      run: |
+        pip install .
+        pip install -r requirements.txt
+        pip install pytest-cov codecov
 
-    - name: Install pytest
-      run: pip install pytest
+    - name: Run tests with coverage
+      run: pytest --cov=tests/
 
-    - name: Run tests
-      run: pytest tests/
+    - name: Generate coverage report
+      run: codecov
+
+    - name: Push to Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
