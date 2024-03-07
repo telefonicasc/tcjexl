@@ -4,11 +4,11 @@ from functools import wraps
 
 from parsimonious.exceptions import ParseError as ParsimoniousParseError
 
-from pyjexl.analysis import ValidatingAnalyzer
-from pyjexl.evaluator import Context, Evaluator
-from pyjexl.exceptions import ParseError
-from pyjexl.operators import default_binary_operators, default_unary_operators, Operator
-from pyjexl.parser import jexl_grammar, Parser
+from .analysis import ValidatingAnalyzer
+from .evaluator import Context, Evaluator
+from .exceptions import ParseError
+from .operators import default_binary_operators, default_unary_operators, Operator
+from .parser import jexl_grammar, Parser
 
 
 #: Encapsulates the variable parts of JEXL that affect parsing and

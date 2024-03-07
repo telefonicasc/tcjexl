@@ -6,7 +6,7 @@ except ImportError:
     # as it's been EOL for a while now
     from collections import MutableMapping
 
-from pyjexl.exceptions import MissingTransformError
+from .exceptions import MissingTransformError
 
 
 class Context(MutableMapping):

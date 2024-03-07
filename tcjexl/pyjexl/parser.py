@@ -4,8 +4,8 @@ from future.utils import with_metaclass
 
 from parsimonious import Grammar, NodeVisitor
 
-from pyjexl.exceptions import InvalidOperatorError
-from pyjexl.operators import Operator
+from .exceptions import InvalidOperatorError
+from .operators import Operator
 
 
 def operator_pattern(operators):
