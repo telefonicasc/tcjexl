@@ -2,6 +2,8 @@
 
 This is a wrapper of the [pyjexl](https://pypi.org/project/pyjexl/) library, including a set of default transformations  (detailed in [this section](#included-transformations))
 
+Current version of the tcjexl library embeds the pyjexl code (as in [0.3.0 release](https://files.pythonhosted.org/packages/ab/1d/757ac4c9ae2da97cbb2c844fb70395990b5bbacccff5c0297ceefd670c62/pyjexl-0.3.0.tar.gz)) in order to apply some fixes. Ideally, the fix should be applied on the upstream library (in this sense, ve have created [this PR](https://github.com/mozilla/pyjexl/pull/30)) but it hasn't been merged yet at the moment of writing this by pyjexl mantainers. Hopefully, if at some moment the fix is applied on pyjexl we could simplify this (it would be a matter of rollback [this PR](https://github.com/telefonicasc/tcjexl/pull/6) and set the proper pyjexl dependency, e.g. `pyjexl==0.4.0`)
+
 Example:
 
 ```python
@@ -140,6 +142,8 @@ You need to be registered at https://pypi.org with permissions at https://pypi.o
 upload process you will be prompted to provide your user and password.
 
 ## Changelog
+
+- Add: allow to use context for transformations arguments (using a patched version of pyjexl)
 
 0.1.0 (March 6th, 2024)
 
