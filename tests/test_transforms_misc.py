@@ -48,3 +48,13 @@ class TestTransformsMisc(unittest.TestCase):
     def test_strToLocation(self):
         result = self.jexl.evaluate('"-10.13,24.54"|strToLocation', {})
         self.assertEqual(result, [-10.13, 24.54])
+
+    def test_strToLocation_five_elements(self):
+        result = self.jexl.evaluate('"-10.13,24.54,21,42,23"|strToLocation', {})
+        self.assertEqual(result, [-10.13, 24.54, 21, 42, 23])
+
+    def test_strToLocation_location(self):
+        context = {'point': '-42.13,23.11'}
+        result = self.jexl.evaluate('{coordinates:(point|strToLocation), type: "Point"}', context)
+        self.assertEqual(result, {'coordinates': [-42.13, 23.11], 'type': 'Point'})
+

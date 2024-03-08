@@ -101,15 +101,7 @@ Result:
 # Miscelaneous transformations
 
 - `typeOf`: returns type representation of the data (e.g. `str`, `int`, `float`, etc.)
-- `strToLocation`: given a latitude and a longitude, it returns an array to build a location. Example: `"value1, value2"|strToLocation`. Example: `"value1, value2"|strToLocation` returns `[value1, value2]`, so we can use this:
-
-```json
-{
-  "init": null,
-  "type": "geo:json",
-  "exp": "{coordinates:(point|strToLocation),type: \"Point\"}"
-}
-```
+- `strToLocation`: given a string with a comma separated list of decimal numbers, returns an array of such numbers. Example: `"value1, value2"|strToLocation`. Example: `"value1, value2"|strToLocation` returns `[value1, value2]`. It's name (maybe not very good :) is due to it can be useful to generate a [GeoJSON](https://geojson.org/) representing a point which coordinates are provided in a string, eg: `{coordinates:(point|strToLocation),type: "Point"}`
 
 ## Packaging
 
