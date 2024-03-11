@@ -34,3 +34,12 @@ class TestContextAsArgument(unittest.TestCase):
 
         result = jexl.evaluate(expression, context2)
         self.assertEqual(result, False)
+
+    def test_context_as_argument_2(self):
+        jexl = JEXL()
+
+        context = {"S": "a given string", "init": 2, "finish": 5}
+        expression = 'S|substring(init,finish)'
+
+        result = jexl.evaluate(expression, context)
+        self.assertEqual(result, 'giv')
