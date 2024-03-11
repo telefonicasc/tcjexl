@@ -135,6 +135,8 @@ upload process you will be prompted to provide your user and password.
 
 ## Changelog
 
+0.2.0 (March 11th, 2024)
+
 - Add: allow to use context for transformations arguments (using a patched version of pyjexl)
 
 0.1.0 (March 6th, 2024)
