@@ -20,7 +20,7 @@ from setuptools import find_packages, setup
 
 HERE = pathlib.Path(__file__).parent
 
-VERSION = '0.2.0'
+VERSION = '0.2.0.post'
 PACKAGE_NAME = 'tcjexl'
 AUTHOR = ''
 AUTHOR_EMAIL = ''
