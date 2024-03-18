@@ -1,0 +1,43 @@
+name: Python Tests & Coverage
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    name: Run Python Tests and Generate Coverage
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.11
+
+    - name: Install dependencies
+      run: |
+        pip install .
+        pip install pytest coverage
+
+    - name: Run tests with coverage
+      # pyjexl code is omit as it doesn't belong to us
+      run: |
+        coverage run --omit=tcjexl/pyjexl/**,tests/** -m pytest
+
+    - name: Generate coverage report
+      run: |
+        coverage lcov -o coverage/lcov.info
+
+    - name: Upload coverage to Coveralls
+      uses: coverallsapp/github-action@v2.1.1
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: coverage/lcov.info
