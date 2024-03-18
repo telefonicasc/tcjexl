@@ -28,8 +28,9 @@ jobs:
         pip install pytest coverage
 
     - name: Run tests with coverage
+      # pyjexl code is omit as it doesn't belong to us
       run: |
-        coverage run -m pytest
+        coverage run --omit=tcjexl/pyjexl/ -m pytest
 
     - name: Generate coverage report
       run: |
