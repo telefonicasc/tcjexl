@@ -16,7 +16,7 @@
 # along with IoT orchestrator. If not, see http://www.gnu.org/licenses/.
 
 
-import pyjexl
+from .pyjexl.jexl import JEXL as pyJEXL
 import random
 import datetime
 import math
@@ -25,7 +25,7 @@ import functools
 from datetime import timezone
 from .expression_functions import linearInterpolator, linearSelector, randomLinearInterpolator, zipStrList, valueResolver
 
-class JEXL(pyjexl.JEXL):
+class JEXL(pyJEXL):
     def __init__(self, context=None, now=datetime.datetime.now(timezone.utc)):
         super().__init__(context=context)
 
