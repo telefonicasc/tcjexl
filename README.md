@@ -1,5 +1,7 @@
 # tcjexl
 
+[![Coverage Status](https://coveralls.io/repos/github/telefonicasc/tcjexl/badge.svg)](https://coveralls.io/github/telefonicasc/tcjexl)
+
 This is a wrapper of the [pyjexl](https://pypi.org/project/pyjexl/) library, including a set of default transformations  (detailed in [this section](#included-transformations))
 
 Current version of the tcjexl library embeds the pyjexl code (as in [0.3.0 release](https://files.pythonhosted.org/packages/ab/1d/757ac4c9ae2da97cbb2c844fb70395990b5bbacccff5c0297ceefd670c62/pyjexl-0.3.0.tar.gz)) in order to apply some fixes. Ideally, the fix should be applied on the upstream library (in this sense, ve have created [this PR](https://github.com/mozilla/pyjexl/pull/30)) but it hasn't been merged yet at the moment of writing this by pyjexl mantainers. Hopefully, if at some moment the fix is applied on pyjexl we could simplify this (it would be a matter of rollback [this PR](https://github.com/telefonicasc/tcjexl/pull/6) and set the proper pyjexl dependency, e.g. `pyjexl==0.4.0`)
