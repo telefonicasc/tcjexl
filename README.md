@@ -28,7 +28,7 @@ a text string
 
 ## Using simulated time
 
-By default, the current time reference used by [date related transformations](#date related transformations) is system current time. However, this can be changed using the positional argument `now` in the `JEXL` constructor to specify a function that returns a `datetime` object to be used as current time.
+By default, the current time reference used by [date related transformations](#date-related-transformations) is system current time. However, this can be changed using the positional argument `now` in the `JEXL` constructor to specify a function that returns a `datetime` object to be used as current time.
 
 For instance, if we want to set current time to November 13th, 2020 at 6:24:58am we can use:
 
@@ -100,7 +100,7 @@ Result:
 - `alertMaxValue`: returns `True` when input value is greater on equal to a given condition. Example: `0|rnd(5)|alertMaxValue(2)` returns `True` when `0|rnd(5)` is 3, 4 or 5 (for other input values result will be `False`).
 - `valueResolver`: given an array `[str, value]` allows to map string with values. Example: `flag|valueResolver([['BLACK', 'stormy'], ['NO FLAG', 'curly'], ['RED', 'stormy'], ['YELLOW', 'curly'], ['GREEN', 'plain']])` is the evaluation of `flag` field is `GREEN` then the returned value would be `plain`.
 
-# Miscelaneous transformations
+### Miscelaneous transformations
 
 - `typeOf`: returns type representation of the data (e.g. `str`, `int`, `float`, etc.)
 - `strToLocation`: given a string with a comma separated list of decimal numbers, returns an array of such numbers. Example: `"value1, value2"|strToLocation`. Example: `"value1, value2"|strToLocation` returns `[value1, value2]`. It's name (maybe not very good :) is due to it can be useful to generate a [GeoJSON](https://geojson.org/) representing a point which coordinates are provided in a string, eg: `{coordinates:(point|strToLocation),type: "Point"}`
