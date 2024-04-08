@@ -27,7 +27,6 @@ class TestNull(unittest.TestCase):
 
     def test_null_fail(self):
         context = {"a": None}
-
         self.assertRaises(TypeError, self.jexl.evaluate, 'a*10', context)
 
     def test_nullsafe_number(self):
