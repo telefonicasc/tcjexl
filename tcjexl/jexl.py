@@ -75,3 +75,6 @@ class JEXL(pyJEXL):
         # Tested by test_transforms_misc.py
         super().add_transform("typeOf", lambda x: f'{type(x)}'[8:-2])
         super().add_transform("strToLocation", lambda str: [float(x) for x in str.split(",")])
+
+        # Tested by test_null.py
+        super().add_transform("nullSafe", lambda x, y: x if x is not None else y)

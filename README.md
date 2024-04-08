@@ -104,6 +104,7 @@ Result:
 
 - `typeOf`: returns type representation of the data (e.g. `str`, `int`, `float`, etc.)
 - `strToLocation`: given a string with a comma separated list of decimal numbers, returns an array of such numbers. Example: `"value1, value2"|strToLocation`. Example: `"value1, value2"|strToLocation` returns `[value1, value2]`. It's name (maybe not very good :) is due to it can be useful to generate a [GeoJSON](https://geojson.org/) representing a point which coordinates are provided in a string, eg: `{coordinates:(point|strToLocation),type: "Point"}`
+- `nullSafe`: return the input value, if not `None`, or a failsafe value. Example: `a|safeNull(23)` return the value of `a` if `a` is not None or `23` if `a` is None. 
 
 ## Packaging
 
@@ -136,6 +137,8 @@ You need to be registered at https://pypi.org with permissions at https://pypi.o
 upload process you will be prompted to provide your user and password.
 
 ## Changelog
+
+- Add: nullSafe transformation ([#11](https://github.com/telefonicasc/tcjexl/issues/11))
 
 0.2.0 (March 11th, 2024)
 
